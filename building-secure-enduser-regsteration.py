@@ -69,4 +69,32 @@ def create_user_account(name: str, email: str, password: str):
         failed_registrations.append({"email":email,
                                      "error":str(error)})
         return None
-    
+# -------------------------------------------------------------------
+# Testing Section
+# -------------------------------------------------------------------
+ 
+def run_tests():
+    test_cases = [
+        ("Baraa", "baraa@email.com", "Password1"),
+        ("AnotherUser", "baraa@email.com", "Password1"),
+        ("Al", "al@email.com", "Password1"),
+        ("Sarah", "sarah@email.com", "weakpass"),
+    ]
+    for index, (name, email, password) in enumerate(test_cases, start=1):
+        print(f"\nTest {index}")
+        result = create_user_account(name, email, password)
+ 
+        if result:
+            print("Registration successful:", result)
+        else:
+            print("Registration failed.")
+ 
+    print("\nFinal Registered Users:")
+    print(registered_users)
+ 
+    print("\nFailed Registrations:")
+    print(failed_registrations)
+ 
+ 
+ 
+run_tests()
