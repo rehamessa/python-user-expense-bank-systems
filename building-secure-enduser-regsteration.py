@@ -32,3 +32,17 @@ def validate_password(password:str)->bool:
     has_upper=any(char.isupper() for char in password)
     has_digit=any(char.isdigit() for char in password)
     return has_digit and has_upper
+# -------------------------------------------------------------------
+# Orchestrator Validation Function
+# -------------------------------------------------------------------
+
+def validate_user_data(name:str, email:str, password:str)->bool:
+    if not validate_name(name):
+        raise ValueError("Name must contain at least 3 characters")
+    if not validate_email(email):
+        raise ValueError("Email must contain '@' and '.'")
+    if not validate_password(password):
+        raise ValueError(  "Password must be at least 8 characters long and "
+            "contain one uppercase letter and one digit")
+    return True
+    
