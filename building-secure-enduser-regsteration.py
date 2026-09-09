@@ -45,4 +45,28 @@ def validate_user_data(name:str, email:str, password:str)->bool:
         raise ValueError(  "Password must be at least 8 characters long and "
             "contain one uppercase letter and one digit")
     return True
+
+# -------------------------------------------------------------------
+# Registration Function
+# -------------------------------------------------------------------
+
+def create_user_account(name: str, email: str, password: str):
+    try:
+        validate_user_data(name,email,password)
+        if any(user["email"]==email for user in registered_users):
+            raise ValueError("An account with this email exists")
+
+        user_record={
+            "name":name,
+            "password":password,
+            "email":email,
+            "status":"active",
+        }
+
+        registered_users.append(user_record)
+        return user_record
+    except ValueError as error:
+        failed_registrations.append({"email":email,
+                                     "error":str(error)})
+        return None
     
