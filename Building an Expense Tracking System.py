@@ -17,4 +17,17 @@ def add_expense(amount:float, category:str, description:str)->dict:
     }
     
     expenses.append(expense)
+   
     return expense
+#------------------------------------------------
+#Calculate Total Expenses
+#---------------------------------------------------------------
+
+def calculate_total_expenses()->float:
+    total=0
+    for expense in expenses:
+        total+=expense["amount"]
+    return total
+
+    
+    
