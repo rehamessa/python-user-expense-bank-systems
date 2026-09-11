@@ -39,6 +39,20 @@ def calculate_total_by_category(category:str)->float:
     for expense in expenses:
         if expenses["category"].lower()==category.lower():
             total+=expenses["amount"]
-    return to
+    return total
+
+#----------------------------------------------------------------------
+#Show All Expenses
+#----------------------------------------------------------------------
+
+def show_expenses()->None:
+    if not expenses:
+        print('No expenses recorded.')
+        return
+    for index,expense in enumerate(expenses,start=1):
+        print(
+            f"{index}.{expense['category']}-"
+            f"{expense["description"]:$expense["amount"]}")
+
 
 
