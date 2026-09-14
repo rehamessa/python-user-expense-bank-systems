@@ -58,5 +58,33 @@ print("Account created:", result)
 print("\nAccounts:")
 print(accounts) '''
 
+#-------------------------------------------------------
+# Deposit Function
+#-------------------------------------------------------
 
+def deposit(name:str, amount:float):
+    if amount<=0:
+        raise ValueError("amount must be greated than 0")
+
+    account=find_account(name)
+
+    if not account:
+        raise ValueError("account not Found")
+
+    account["initial_balance"]+=amount
+
+    account["transactions"].append({
+
+    "type":"deposite",
+    "amount":amount
+    })
+
+    return account["initial_balance"]
+
+
+create_account("Reham", 1000)
+new_balance = deposit("Reham", 500)
+print("Deposit successful!")
+print("New balance:", new_balance)
+    
 
