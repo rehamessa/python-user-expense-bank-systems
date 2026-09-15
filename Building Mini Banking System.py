@@ -82,9 +82,41 @@ def deposit(name:str, amount:float):
     return account["initial_balance"]
 
 
-create_account("Reham", 1000)
+''' create_account("Reham", 1000)
 new_balance = deposit("Reham", 500)
 print("Deposit successful!")
-print("New balance:", new_balance)
+print("New balance:", new_balance)'''
     
 
+#-------------------------------------------------------
+# Withdraw Function
+#-------------------------------------------------------
+
+def withdraw(name:str, amount:float):
+    if amount<=0:
+        raise ValueError("amount is inavlid")
+
+    account=find_account(name)
+
+    if not account:
+        raise ValueError("account not Found")
+
+    if amount>account["initial_balance"]:
+        raise ValueError("insuficient balance")
+    
+    account["initial_balance"]-=amount
+
+    account["transactions"].append({
+
+    "type":"withdraw",
+    "amount":amount
+    })
+
+    return account["initial_balance"]
+
+'''create_account("Reham", 1000)
+new_balance = withdraw("Reham", 500)
+print("withdarw successful!")
+print("New balance:", new_balance)'''
+
+    
