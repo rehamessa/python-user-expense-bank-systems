@@ -150,3 +150,23 @@ deposit("Reham", 100)
 
 show_account("Reham")'''
 
+
+#-------------------------------------------------------
+# Run text
+#-------------------------------------------------------
+
+def run_tests():
+    try:
+        create_account("Reham", 1000)
+        withdraw("Reham", 500)
+        deposit("Reham", 100)
+        withdraw("Reham", 54)
+        deposit("Reham", 300)
+
+    except ValueError as error:
+        print("Error:",error)
+
+    show_account("Reham")
+
+run_tests()
+
