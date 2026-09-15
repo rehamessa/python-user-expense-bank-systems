@@ -104,6 +104,7 @@ def withdraw(name:str, amount:float):
     if amount>account["initial_balance"]:
         raise ValueError("insuficient balance")
     
+    
     account["initial_balance"]-=amount
 
     account["transactions"].append({
@@ -119,4 +120,33 @@ new_balance = withdraw("Reham", 500)
 print("withdarw successful!")
 print("New balance:", new_balance)'''
 
+#-------------------------------------------------------
+# Show Account Summary
+#-------------------------------------------------------
+
+def show_account(name:str):
+
+    account=find_account(name)
+    if not account:
+        print("Account is not found")
+        return
     
+    print(f"\nAccount summary for {account['name']}")
+    print(f"Current Balance: ${account['initial_balance']}")
+
+    print ("Transaction:")
+
+    if not account["transactions"]:
+        print("No transaction yet")
+    else:
+        for transaction in account["transactions"]:
+            print(f"- {transaction['type']} : ${transaction['amount']}")
+
+'''
+create_account("Reham", 1000)
+
+withdraw("Reham", 500)
+deposit("Reham", 100)
+
+show_account("Reham")'''
+
